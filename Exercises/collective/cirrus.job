@@ -2,6 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=mpigather
+#SBATCH --output=%x-%j.out
 #SBATCH --time=0:1:0
 #SBATCH --exclusive
 #SBATCH --nodes=2
@@ -16,6 +17,9 @@
 ## 09/05/23 tc044_948393
 ## 10/05/23 tc044_948390
 
+## To run small jobs in short queue: --qos=short, --reservation=shortqos
+## To run general jobs:  --qos=standard (delete reference to reservation)
+
 module load mpt
 module load intel-compilers-19
 
@@ -28,3 +32,4 @@ export OMP_NUM_THREADS=1
 #   srun picks up the distribution from the sbatch options
 
 srun --unbuffered --distribution=block:block --hint=nomultithread ./mpigather
+
