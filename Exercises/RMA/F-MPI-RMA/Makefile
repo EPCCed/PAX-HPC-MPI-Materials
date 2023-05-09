@@ -1,9 +1,9 @@
 MF=	Makefile
 
-#FC=	mpif90
-FC=	ftn
+FC=	mpif90
+#FC=	ftn
 
-FFLAGS=	
+FFLAGS=	-fc=ifort
 LFLAGS=	$(FFLAGS)
 
 EXE=	traffic
